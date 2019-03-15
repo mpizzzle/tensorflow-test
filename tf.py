@@ -29,18 +29,6 @@ model.compile(optimizer='adam',
 model.fit(train_images, train_labels, epochs=5)
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 
-#predictions = model.predict(test_images)
-#num_rows = 5
-#num_cols = 5
-#num_images = num_rows*num_cols
-#plt.figure(figsize=(2*2*num_cols, 2*num_rows))
-#for i in range(num_images):
-#  plt.subplot(num_rows, 2*num_cols, 2*i+1)
-#  plot_image(i, predictions, test_labels, test_images, class_names)
-#  plt.subplot(num_rows, 2*num_cols, 2*i+2)
-#  plot_value_array(i, predictions, test_labels)
-#plt.show()
-
 my_image = Image.open("clothes/IMG_20190314_153500.jpg").convert('L')
 #my_image = Image.open("clothes/IMG_20190314_154002.jpg").convert('L')
 resized = my_image.resize((28, 28), Image.ANTIALIAS)
@@ -56,12 +44,12 @@ img = (np.expand_dims(np_array, 0))
 prediction = model.predict(img)
 print(prediction)
 
-#plt.figure()
 #plot_value_array(0, prediction, test_labels)
 #_ = plt.xticks(range(10), class_names, rotation=45)
 
 print(img)
 print("\nPrediction: ", class_names[np.argmax(prediction[0])])
+plt.figure()
 plt.imshow(np_array, cmap=plt.cm.binary)
 plt.colorbar()
 plt.grid(True)
